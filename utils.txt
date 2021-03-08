@@ -1,0 +1,13 @@
+$SPARK_HOME/bin/spark-submit --master local[*] --class com.wellsfargo.pks.simple_data_profiler --jars /home/debatosh/projects-debu/spark-kafka-1/spark-shell-jars/mysql-connector-java-5.1.38.jar /home/debatosh/projects-debu/data-profiling/spark_simple_data_profiling-0.0.1-SNAPSHOT-jar-with-dependencies.jar "debu" "password" "127.0.0.1:3306" "ip2location" "xyzschema" "transaction_geoip,EMPLOYEES" "/home/debatosh/projects-debu/data-profiling/output"
+
+
+CREATE TABLE EMPLOYEES
+(id INTEGER not NULL,
+first VARCHAR(25),
+last VARCHAR(25),
+age INTEGER,
+PRIMARY KEY (id));
+
+INSERT INTO EMPLOYEES (id,first,last,age) VALUES (1,'super','man',199);
+INSERT INTO EMPLOYEES (id,first,last,age) VALUES (2,'bat','man',299);
+INSERT INTO EMPLOYEES (id,first,last,age) VALUES (3,'wonder','women',399);
