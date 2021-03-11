@@ -71,7 +71,7 @@ object simple_data_profiler {
       val rdbms_df_in = spark.read.jdbc(url = "jdbc:mysql://localhost:3306/ip2location", table = RDBMS_dprofiler_single_table, properties = mysql_properties)
       val rdbms_df_out = rdbms_df_in.summary()
       rdbms_df_out.show()
-      //rdbms_df_out.write.format("csv").save(RDBMS_dprofiler_out_loc+"_"+RDBMS_dprofiler_single_table)
+      rdbms_df_out.write.format("jdbc").mode("overwrite").option("url","jdbc:mysql://localhost:3306/ip2location").option("dbtable","db_profile1").option("driver","com.mysql.jdbc.Driver").option("user","debu").option("password","password").save()
       rdbms_df_out.coalesce(1).write.format("csv").option("header", "true").save(RDBMS_dprofiler_out_loc+"_"+RDBMS_dprofiler_single_table)
     }
 
